@@ -7,12 +7,47 @@
 
 </head>
 <body>
-	<section>
-		<div class="text-center">
-			<h1 class="font-weight-bold">Sign up page</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit iste aliquid ipsum cum beatae reiciendis animi recusandae aspernatur soluta ipsa.</p>
-
-			<button class="btn bg-danger btn-lg text-white btn-outline-light">Get Start</button>
+	<section class="signup-banner d-flex justify-content-center align-items-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card mt-3 rounded ">
+					
+					<div class="container text-center" >
+								<img style="width: 80px;" th:src="@{/img/icons/signup.svg}" alt="Sign up icon" />
+							</div>
+						<h1 class="text-center">Sign up here</h1>
+						
+						<form th:action="@{/do_register}" method="post">
+						
+							
+							  <div class="form-group">
+							    <label for="name_field">Your name</label>
+							    <input type="text" class="form-control" id="name_field" placeholder="Enter your name here" required>
+							  </div>
+							  
+							  <div class="form-group">
+							    <label for="email_field">Email</label>
+							    <input type="email" class="form-control" id="email_field" placeholder="Enter email address" required>
+							  </div>
+							  
+							  <div class="form-group">
+							    <label for="password_field">Password</label>
+							    <input type="password" class="form-control" id="password_field" placeholder="Password" required>
+							  </div>
+							  
+							  <div class="form-group">
+							  	<textarea placeholder="Enter about yourself" class="form-control" rows="5"></textarea>
+							  </div>
+							  
+							  <div class="container text-center">
+							  	<button type="submit" class="btn btn-success">Submit</button>
+							  	<button type="reset" class="btn btn-danger">Reset</button>
+							  </div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </body>
