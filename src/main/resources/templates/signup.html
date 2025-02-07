@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="base::layout(~{::section})">
+	th:replace="~{base::layout(~{::section})}">
 <head>
 <meta charset="UTF-8" />
 <title>This is sign up page.</title>
@@ -11,33 +11,43 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
-					<div class="my-card mt-3 rounded ">
+					<div class="my-card mt-1 rounded ">
+					
+					<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
+						<p th:text="${session.message.content}"></p>
+						
+					</div>
 					
 					<div class="container text-center" >
 								<img style="width: 80px;" th:src="@{/img/icons/signup.svg}" alt="Sign up icon" />
 							</div>
 						<h1 class="text-center">Sign up here</h1>
 						
-						<form th:action="@{/do_register}" method="post">
+						<form th:action="@{/do_register}" method="post" th:object="${user}">
 						
 							
 							  <div class="form-group">
 							    <label for="name_field">Your name</label>
-							    <input type="text" class="form-control" id="name_field" placeholder="Enter your name here" required>
+							    <input name="name" th:text="${user.getAbout()}" th:value="${user.name}" type="text" class="form-control" id="name_field" placeholder="Enter your name here" required>
 							  </div>
 							  
 							  <div class="form-group">
 							    <label for="email_field">Email</label>
-							    <input type="email" class="form-control" id="email_field" placeholder="Enter email address" required>
+							    <input name="email" th:text="${user.getAbout()}" th:value="${user.email}" type="email" class="form-control" id="email_field" placeholder="Enter email address" required>
 							  </div>
 							  
 							  <div class="form-group">
 							    <label for="password_field">Password</label>
-							    <input type="password" class="form-control" id="password_field" placeholder="Password" required>
+							    <input name="password" type="password" class="form-control" id="password_field" placeholder="Password" required>
 							  </div>
 							  
 							  <div class="form-group">
-							  	<textarea placeholder="Enter about yourself" class="form-control" rows="5"></textarea>
+							  	<textarea name="about" th:text="${user.getAbout()}" th:value="${user.about}" placeholder="Enter about yourself" class="form-control" rows="3"></textarea>
+							  </div>
+							  
+							  <div class="form-group form-check">
+							  	<input name="agreement" type="checkbox" id="agreement" class="form-check-input" />
+							  	<label for="agreement">Accept terms and conditions</label>
 							  </div>
 							  
 							  <div class="container text-center">
