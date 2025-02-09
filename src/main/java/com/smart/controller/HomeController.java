@@ -1,9 +1,11 @@
 package com.smart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,10 @@ import jakarta.validation.Valid;
 public class HomeController{
 	
 	@Autowired
-	UserRepository userRepository;
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	@RequestMapping("/")
 	public String home(Model model)
@@ -66,6 +71,7 @@ public class HomeController{
 			user.setRole("ROLE_USER");
 			user.setEnabled(true);
 			user.setImageUrl("default.png");
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			
 			System.out.println("Agreement"+agreement);
 			System.out.println("User "+user);
@@ -84,4 +90,5 @@ public class HomeController{
 			return "signup";
 		}
 	}
+	
 }
