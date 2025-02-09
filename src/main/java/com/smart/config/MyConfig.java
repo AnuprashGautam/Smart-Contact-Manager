@@ -37,7 +37,7 @@ public class MyConfig {
     }
     
     
-    // Autherization based on the http request is managed here.
+    // Authrization based on the http request is managed here.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -47,9 +47,9 @@ public class MyConfig {
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/**").permitAll()
             )
-            //.formLogin(Customizer.withDefaults())  // Default Spring Security login form
+//            .formLogin(Customizer.withDefaults())  // Default Spring Security login form
             .formLogin(form -> form
-                    .loginPage("login")   // Specify your custom login page URL
+                    .loginPage("/signin")   // Specify your custom login page URL
                     .permitAll()           // Allow all users to access the login page
                 )
             .build();

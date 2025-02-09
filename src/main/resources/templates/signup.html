@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
-					<div class="my-card mt-1 rounded ">
+					<div class="my-signup-card mt-1 rounded ">
 					
 					<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
 						<p th:text="${session.message.content}"></p>
@@ -69,6 +69,10 @@
 							  	<button type="submit" class="btn btn-success">Submit</button>
 							  	<button type="reset" class="btn btn-danger">Reset</button>
 							  </div>
+							  
+							  <p class="signup text-center mt-3">
+								Already have an account? <a rel="noopener noreferrer" href="/signin" class="">Sign in</a>
+							</p>
 						</form>
 					</div>
 				</div>

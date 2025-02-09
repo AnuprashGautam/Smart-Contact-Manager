@@ -50,6 +50,14 @@ public class HomeController{
 		return "signup";
 	}
 	
+	@GetMapping("/signin")
+	public String login(Model model) {
+		
+		model.addAttribute("title", "Sign in - Smart Contact Manager");
+
+		return "signin";
+	}
+	
 	// Handler for registering user.
 	@PostMapping("/do_register")
 	public String registerUser(@Valid @ModelAttribute("user") User user,BindingResult bindingResult, @RequestParam(value="agreement",defaultValue="false") boolean agreement,Model model, HttpSession session)

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>This is login page.</title>
+
+</head>
+<body>
+	<section
+		class="signin-banner d-flex justify-content-center align-items-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-signin-card mt-1 rounded ">
+
+						<div class="container text-center">
+							<img style="width: 80px;" th:src="@{/img/icons/signin.svg}"
+								alt="Sign up icon" />
+						</div>
+						<h1 class="text-center">Sign in here</h1>
+
+						<div th:if="${param.error}" class="alert alert-danger">
+							Invalid email and password.</div>
+
+						<div th:if="${param.logout}" class="alert alert-success">
+							You have been logged out.</div>
+
+						<form th:action="@{/signin}" method="post">
+
+							<div class="form-group">
+								<label for="email_field">Email</label> <input name="email"
+									type="email" class="form-control" id="username"
+									placeholder="Enter email address" required>
+							</div>
+
+
+							<div class="form-group">
+								<label for="password_field">Password</label> <input
+									name="password" type="password" class="form-control"
+									id="password_field" placeholder="Password" required>
+							</div>
+
+							<div class="container text-center">
+								<button type="submit" class="btn btn-success">Sign in</button>
+
+							</div>
+
+							<p class="signup text-center mt-3">
+								Don't have an account? <a rel="noopener noreferrer" href="/signup" class="">Sign up</a>
+							</p>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</body>
+</html>
