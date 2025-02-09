@@ -19,8 +19,8 @@ body {
 }
 
 .my-card{
-	padding: 10px;
-	background: white;
+	padding: 15px;
+	background: linear-gradient(rgb(255, 162, 127, .9),rgba(135,206,235,0.6));
 }
 
 .signup-banner{
@@ -30,6 +30,19 @@ body {
     background-size: cover;        /* Optional: scales the image to cover the element */
     background-repeat: no-repeat;  /* Optional: prevents the image from repeating */
 }
+
+
+/* Home page logo animation */
+@keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .logo {
+            width: 100px;
+            height: auto;
+            animation: fadeIn 3s ease-in-out;
+        }
 
 /* Home button css */
 /* From Uiverse.io by Li-Deheng */ 
