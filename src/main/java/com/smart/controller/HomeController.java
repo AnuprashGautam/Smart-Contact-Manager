@@ -41,7 +41,7 @@ public class HomeController{
 		return "about";
 	}
 	
-	@RequestMapping("/signup")
+	@GetMapping("/signup")
 	public String signUp(Model model,HttpSession session)
 	{
 		session.removeAttribute("message");

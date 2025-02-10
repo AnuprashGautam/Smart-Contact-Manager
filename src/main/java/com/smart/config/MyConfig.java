@@ -50,6 +50,9 @@ public class MyConfig {
 //            .formLogin(Customizer.withDefaults())  // Default Spring Security login form
             .formLogin(form -> form
                     .loginPage("/signin")   // Specify your custom login page URL
+                    .loginProcessingUrl("/dologin")		// URL responsible for processing the login form.
+                    .defaultSuccessUrl("/user/index")	// If the authentication is successful.
+//                  .failureUrl("/login-fail")			// If the authentication is failed.
                     .permitAll()           // Allow all users to access the login page
                 )
             .build();
