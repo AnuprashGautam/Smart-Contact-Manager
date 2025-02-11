@@ -12,9 +12,12 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-	
+
 <!-- Font awesome cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+	integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Using the Google font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +33,7 @@
 <body>
 
 	<!-- Start of the navbar. -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
 		<a class="navbar-brand fs-3 fw-bold" href="/"> <img
 			src="/img/logo/logo.png" alt="Logo" width="25" height="25"
 			class="d-inline-block align-top"> Smart Contact Manager
@@ -49,45 +52,51 @@
 						Home<span class="sr-only">(current)</span>
 				</a></li>
 
-				<li class="nav-item">
-				   <a class="nav-link"><span  th:text="${user.name}"></span></a>
-				</li>
+				<li class="nav-item"><a class="nav-link"><span
+						th:text="${user.name}"></span></a></li>
 
-				<li class="nav-item"><a class="nav-link active" href="#" th:href="@{/logout}">Logout</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#"
+					th:href="@{/logout}">Logout</a></li>
 			</ul>
 		</div>
 	</nav>
 	<!-- End of the navbar. -->
-	
-	
+
+
 	<!-- Start of sidebar -->
-	
-	<div class="sidebar">
-		
-		<span onclick="toggelSidebar()" class="crossBtn">&times;</span>
-	
-		<a href="#" class="item"><i class="fa-solid fa-house"></i> Home</a>
-		<a href="#" class="item"><i class="fa-regular fa-address-book"></i> View Contacts</a>
-		<a href="#" class="item"><i class="fa-solid fa-plus"></i> Add Contacts</a>
-		<a href="#" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
-		<a href="#" class="item"><i class="fa-solid fa-gear"></i> Setting</a>
-		<a href="#" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+
+	<div class="sidebar mt-1">
+
+		<span onclick="toggelSidebar()" class="crossBtn">&times;</span> <a
+			href="#" th:href="@{/user/index}" class="item"><i
+			class="fa-solid fa-house"></i> Home</a> <a href="#" class="item"><i
+			class="fa-regular fa-address-book"></i> View Contacts</a> <a href="#"
+			th:href="@{/user/add-contact}" class="item"><i
+			class="fa-solid fa-plus"></i> Add Contacts</a> <a href="#" class="item"><i
+			class="fa-solid fa-user"></i> Your Profile</a> <a href="#" class="item"><i
+			class="fa-solid fa-gear"></i> Setting</a> <a href="#"
+			th:href="@{/logout}" class="item"><i
+			class="fa-solid fa-right-from-bracket"></i> Logout</a>
 		<div class="divider"></div>
 	</div>
-	
+
 	<!-- End of sidebar -->
-	
-	
-	<!-- Start of content -->
-	
-	<div class="content">
-		
-		<i onclick="toggelSidebar()" class="fas fa-bars m-3"></i>
-		
-		<div th:replace="${content}"></div>
-	
+
+
+	<div class="dashboard-banner">
+		<!-- Start of content -->
+
+		<div class="content mt-5">
+
+			<i onclick="toggelSidebar()" class="fas fa-bars m-3 "
+				style="cursor: pointer; position: absolute; top: 8px; left: 0; font-size: 24px;"></i>
+
+			<div class="content-container">
+				<div style="margin-left: 20px;" th:replace="${content}"></div>
+			</div>
+		</div>
 	</div>
-	
+
 	<!-- End of content -->
 
 	<!-- Optional JavaScript -->

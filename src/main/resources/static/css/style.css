@@ -206,8 +206,9 @@ body {
     position: fixed; 
     width: 18%; 
     height: 100%;
-    background: white;
+    background: #e2e2e2;
     padding-top: 45px;
+    z-index: 999;
 }
 
 
@@ -232,16 +233,36 @@ body {
 }
 
 .content {
-	margin-left: 20%;
+	margin-left: 18%;
+	position: relative;
+}
+
+.content-container{
+	padding: 50px;
 }
 
 .sidebar .crossBtn {
     position: absolute;
-    top: 10px; /* Moves button down */
+    top: 3px; /* Moves button down */
     right: 10px; /* Moves button left */
-    font-size: 36px;
+    font-size: 50px;
     cursor: pointer;
-    color: black; /* Makes button visible */
+    color: gray; /* Makes button visible */
 }
+
+.card{
+	background: linear-gradient(rgb(255, 162, 127, .9),
+		rgba(135, 206, 235, 0.6));
+}
+
+.dashboard-banner{
+	maging:0;
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(rgba(255, 0, 0, .6),
+		rgba(135, 206, 235, 0.4)), url("../img/dashboard_banner.jpg");
+	background-size: cover;
+}
+
 
 
