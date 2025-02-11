@@ -1,51 +1,64 @@
 body {
-    background:linear-gradient(rgba(255,0,0,.8),rgba(135, 206, 235,0.4)); /* Adjust colors as needed */
-    font-family: 'Zain', sans-serif;
-    height: 100vh;
-    margin: 0;
+	background: #e2e2e2;
+	font-family: 'Zain', sans-serif;
+	height: 100vh;
+	margin: 0;
 }
 
-.bg-primary{
-	background: linear-gradient(rgba(255,0,0,1),rgba(255,0,0,0.8));
+.bg-primary {
+	background: linear-gradient(rgba(255, 0, 0, 1), rgba(255, 0, 0, 0.8));
 }
 
-.banner{
+.banner {
 	width: 100%;
 	height: 93vh;
-	background-image: linear-gradient(rgba(255,0,0,.6),rgba(135,206,235,0.4)), url("../img/banner.jpg"); /* Replace with your image path */
-    background-size: cover;        /* Optional: scales the image to cover the element */
-    background-repeat: no-repeat;  /* Optional: prevents the image from repeating */
+	background-image: linear-gradient(rgba(255, 0, 0, .6),
+		rgba(135, 206, 235, 0.4)), url("../img/banner.jpg");
+	/* Replace with your image path */
+	background-size: cover;
+	/* Optional: scales the image to cover the element */
+	background-repeat: no-repeat;
+	/* Optional: prevents the image from repeating */
 	color: white;
 }
 
-.my-signup-card{
+.my-signup-card {
 	padding: 10px;
-	background: linear-gradient(rgb(255, 162, 127, .9),rgba(135,206,235,0.6));
+	background: linear-gradient(rgb(255, 162, 127, .9),
+		rgba(135, 206, 235, 0.6));
 }
 
-.my-signin-card{
+.my-signin-card {
 	padding: 10px;
-	background: linear-gradient(rgb(255, 162, 127, .9),rgba(135,206,235,0.6));
-	
+	background: linear-gradient(rgb(255, 162, 127, .9),
+		rgba(135, 206, 235, 0.6));
 }
 
-.signup-banner{
+.signup-banner {
 	width: 100%;
 	height: 93vh;
-	background-image: linear-gradient(rgba(255,0,0,.6),rgba(135,206,235,0.4)), url("../img/signup-banner.jpg"); /* Replace with your image path */
-    background-size: cover;        /* Optional: scales the image to cover the element */
-    background-repeat: no-repeat;  /* Optional: prevents the image from repeating */
+	background-image: linear-gradient(rgba(255, 0, 0, .6),
+		rgba(135, 206, 235, 0.4)), url("../img/signup-banner.jpg");
+	/* Replace with your image path */
+	background-size: cover;
+	/* Optional: scales the image to cover the element */
+	background-repeat: no-repeat;
+	/* Optional: prevents the image from repeating */
 }
 
-.signin-banner{
+.signin-banner {
 	width: 100%;
 	height: 93vh;
-	background-image: linear-gradient(rgba(255,0,0,.6),rgba(135,206,235,0.4)), url("../img/signin-banner.jpg"); /* Replace with your image path */
-    background-size: cover;        /* Optional: scales the image to cover the element */
-    background-repeat: no-repeat;  /* Optional: prevents the image from repeating */
+	background-image: linear-gradient(rgba(255, 0, 0, .6),
+		rgba(135, 206, 235, 0.4)), url("../img/signin-banner.jpg");
+	/* Replace with your image path */
+	background-size: cover;
+	/* Optional: scales the image to cover the element */
+	background-repeat: no-repeat;
+	/* Optional: prevents the image from repeating */
 }
 
-
+/* Home page logo animation */
 /* Home page logo animation */
 @keyframes fadeIn {
             0% { opacity: 0; transform: scale(0.8); }
@@ -57,83 +70,90 @@ body {
             height: auto;
             animation: fadeIn 3s ease-in-out;
         }
+        
+        
+.logo {
+	width: 100px;
+	height: auto;
+	animation: fadeIn 3s ease-in-out;
+}
 
 /* Home button css */
-/* From Uiverse.io by Li-Deheng */ 
+/* From Uiverse.io by Li-Deheng */
 .btn-conteiner {
-  display: flex;
-  justify-content: center;
-  --color-text: #ffffff;
-  --color-background: #ff135a;
-  --color-outline: #ff145b80;
-  --color-shadow: #00000080;
+	display: flex;
+	justify-content: center;
+	--color-text: #ffffff;
+	--color-background: #ff135a;
+	--color-outline: #ff145b80;
+	--color-shadow: #00000080;
 }
 
 .btn-content {
-  display: flex;
-  align-items: center;
-  padding: 5px 30px;
-  text-decoration: none;
-  font-family: 'Zain', sans-serif;
-  font-weight: 600;
-  font-size: 30px;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: 1s;
-  border-radius: 100px;
-  box-shadow: 0 0 0.2em 0 var(--color-background);
+	display: flex;
+	align-items: center;
+	padding: 5px 30px;
+	text-decoration: none;
+	font-family: 'Zain', sans-serif;
+	font-weight: 600;
+	font-size: 30px;
+	color: var(--color-text);
+	background: var(--color-background);
+	transition: 1s;
+	border-radius: 100px;
+	box-shadow: 0 0 0.2em 0 var(--color-background);
 }
 
 .btn-content:hover, .btn-content:focus {
-  transition: 0.5s;
-  -webkit-animation: btn-content 1s;
-  animation: btn-content 1s;
-  outline: 0.1em solid transparent;
-  outline-offset: 0.2em;
-  box-shadow: 0 0 0.4em 0 var(--color-background);
+	transition: 0.5s;
+	-webkit-animation: btn-content 1s;
+	animation: btn-content 1s;
+	outline: 0.1em solid transparent;
+	outline-offset: 0.2em;
+	box-shadow: 0 0 0.4em 0 var(--color-background);
 }
 
 .btn-content .icon-arrow {
-  transition: 0.5s;
-  margin-right: 0px;
-  transform: scale(0.6);
+	transition: 0.5s;
+	margin-right: 0px;
+	transform: scale(0.6);
 }
 
 .btn-content:hover .icon-arrow {
-  transition: 0.5s;
-  margin-right: 25px;
+	transition: 0.5s;
+	margin-right: 25px;
 }
 
 .icon-arrow {
-  width: 20px;
-  margin-left: 15px;
-  position: relative;
-  top: 6%;
+	width: 20px;
+	margin-left: 15px;
+	position: relative;
+	top: 6%;
 }
-  
+
 /* SVG */
 #arrow-icon-one {
-  transition: 0.4s;
-  transform: translateX(-60%);
+	transition: 0.4s;
+	transform: translateX(-60%);
 }
 
 #arrow-icon-two {
-  transition: 0.5s;
-  transform: translateX(-30%);
+	transition: 0.5s;
+	transform: translateX(-30%);
 }
 
 .btn-content:hover #arrow-icon-three {
-  animation: color_anim 1s infinite 0.2s;
+	animation: color_anim 1s infinite 0.2s;
 }
 
 .btn-content:hover #arrow-icon-one {
-  transform: translateX(0%);
-  animation: color_anim 1s infinite 0.6s;
+	transform: translateX(0%);
+	animation: color_anim 1s infinite 0.6s;
 }
 
 .btn-content:hover #arrow-icon-two {
-  transform: translateX(0%);
-  animation: color_anim 1s infinite 0.4s;
+	transform: translateX(0%);
+	animation: color_anim 1s infinite 0.4s;
 }
 
 /* SVG animations */
@@ -165,3 +185,63 @@ body {
     outline-offset: 0;
   }
 }
+
+/*Side bar css */
+@media only screen and (max-width: 600px) {
+	.sidebar {
+		display: none;
+		width: 80%!important;
+		background: white;
+		height: 100vh;
+		postion: fixed;
+		padding-top: 20px;
+	}
+	
+	.content{
+		margin-left: 0%!important;
+	}
+}
+
+.sidebar {
+    position: fixed; 
+    width: 18%; 
+    height: 100%;
+    background: white;
+    padding-top: 45px;
+}
+
+
+.sidebar a {
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+	text-decoration: none;
+	color: red;
+}
+
+.sidebar a:hover {
+	background: red;
+	color: white;
+}
+
+.sidebar .divider {
+	height: .5px;
+	background: gray;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.content {
+	margin-left: 20%;
+}
+
+.sidebar .crossBtn {
+    position: absolute;
+    top: 10px; /* Moves button down */
+    right: 10px; /* Moves button left */
+    font-size: 36px;
+    cursor: pointer;
+    color: black; /* Makes button visible */
+}
+
+
