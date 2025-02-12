@@ -35,4 +35,4 @@ build/
 
 # Ignore environment variables files
 .env
-application.properties
+.properties
