@@ -99,6 +99,8 @@ public class UserController {
 			// For add contact form.
 			if(b) {
 				session.setAttribute("message",new Message("Contact added Successfully!!!","alert-success"));
+			}else {
+				session.setAttribute("message",new Message("Something went wrong!!! Please add the profile photo.","alert-danger"));
 			}
 			
 			// For the back-end console.

@@ -9,10 +9,14 @@
 		<div class="card">
 			<div class="card-body">
 			
+				<!-- Message box -->
 				<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
 						<p th:text="${session.message.content}"></p>
 				</div>
-			
+				
+				<!-- Removing the message after showing. -->
+				<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+				
 				<h1 class="text-center">Add Contact</h1>
 				<div class="container-fluid mt-1">
 					<div class="row">
