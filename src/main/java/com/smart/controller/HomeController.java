@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.smart.dao.UserRepository;
 import com.smart.entities.User;
 import com.smart.helper.Message;
+import com.smart.services.SessionHelper;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -44,7 +45,6 @@ public class HomeController{
 	@GetMapping("/signup")
 	public String signUp(Model model,HttpSession session)
 	{
-		session.removeAttribute("message");
 		model.addAttribute("title", "Sign up - Smart Contact Manager");
 		model.addAttribute("user",new User());
 		return "signup";
@@ -61,9 +61,7 @@ public class HomeController{
 	// Handler for registering user.
 	@PostMapping("/do_register")
 	public String registerUser(@Valid @ModelAttribute("user") User user,BindingResult bindingResult, @RequestParam(value="agreement",defaultValue="false") boolean agreement,Model model, HttpSession session)
-	{
-		session.removeAttribute("message");
-		
+	{		
 		try {
 			if(!agreement) {
 				System.out.println("You have not agreed the terms and conditions.");

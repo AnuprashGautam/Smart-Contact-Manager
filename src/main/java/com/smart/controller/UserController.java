@@ -22,13 +22,14 @@ import com.smart.dao.UserRepository;
 import com.smart.entities.Contact;
 import com.smart.entities.User;
 import com.smart.helper.Message;
+import com.smart.services.SessionHelper;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -67,7 +68,6 @@ public class UserController {
 								@RequestParam("profileImage") MultipartFile file,
 								HttpSession session) 
 	{
-		
 		boolean b=false;  // For storing the status.
 		try {
 			String name=principal.getName();
