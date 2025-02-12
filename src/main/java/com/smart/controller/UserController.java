@@ -8,6 +8,7 @@ import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +23,15 @@ import com.smart.dao.UserRepository;
 import com.smart.entities.Contact;
 import com.smart.entities.User;
 import com.smart.helper.Message;
-import com.smart.services.SessionHelper;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	@Value("${tinymce.api.key}") // Fetching the api key from the .env file.
+    private String apiKey;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -45,7 +48,7 @@ public class UserController {
 		model.addAttribute("user", user);
 	}
 
-	// For handling the user dashboard.
+	// For handling the user dash-board.
 	@RequestMapping("/index")
 	public String dashboard(Model model, Principal principal) {
 		model.addAttribute("title","User dashboard");
@@ -58,6 +61,9 @@ public class UserController {
 		model.addAttribute("title", "Add Contact");
 		model.addAttribute("contact",new Contact());
 		
+		//Sending the api key to the template so that the respective service can be used.
+		model.addAttribute("api_key",apiKey);
+		
 		return "normal/add_contact_form";
 	}
 	
@@ -68,7 +74,6 @@ public class UserController {
 								@RequestParam("profileImage") MultipartFile file,
 								HttpSession session) 
 	{
-		boolean b=false;  // For storing the status.
 		try {
 			String name=principal.getName();
 			User user = this.userRepository.getUserByUserName(name);
@@ -84,7 +89,6 @@ public class UserController {
 				
 				Files.copy(file.getInputStream(),path , StandardCopyOption.REPLACE_EXISTING);
 				
-				b=true;
 				System.out.println("Image uploaded successfully.");
 			}
 			
@@ -97,11 +101,7 @@ public class UserController {
 			this.userRepository.save(user);
 			
 			// For add contact form.
-			if(b) {
-				session.setAttribute("message",new Message("Contact added Successfully!!!","alert-success"));
-			}else {
-				session.setAttribute("message",new Message("Something went wrong!!! Please add the profile photo.","alert-danger"));
-			}
+			session.setAttribute("message",new Message("Contact added Successfully!!!","alert-success"));
 			
 			// For the back-end console.
 			System.out.println("Contact added successfully.");

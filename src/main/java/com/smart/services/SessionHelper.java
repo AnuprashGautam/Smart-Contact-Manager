@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class SessionHelper {
 
-	public void removeMessageFromSession() {
-		System.out.println("Removing message form session.");
-		
+	public void removeMessageFromSession() {		
 		HttpSession session=((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 	
 		session.removeAttribute("message");
+		
+		System.out.println("Removing message form session.");
 	}
 	
 }
