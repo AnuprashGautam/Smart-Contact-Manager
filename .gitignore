@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Want Git to not track the changes in the application.properties
+src/main/resources/application.properties
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,8 +34,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-# Ignore environment variables files
-.env
-.properties
