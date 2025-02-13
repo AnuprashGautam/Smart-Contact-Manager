@@ -66,27 +66,23 @@
 	<!-- Start of sidebar -->
 
 	<div class="sidebar mt-1">
-
-		<span onclick="toggelSidebar()" class="crossBtn">&times;</span> <a
-			href="#" th:href="@{/user/index}" class="item"><i
-			class="fa-solid fa-house"></i> Home</a> <a href="#" class="item"><i
-			class="fa-regular fa-address-book"></i> View Contacts</a> <a href="#"
-			th:href="@{/user/add-contact}" class="item"><i
-			class="fa-solid fa-plus"></i> Add Contacts</a> <a href="#" class="item"><i
-			class="fa-solid fa-user"></i> Your Profile</a> <a href="#" class="item"><i
-			class="fa-solid fa-gear"></i> Setting</a> <a href="#"
-			th:href="@{/logout}" class="item"><i
-			class="fa-solid fa-right-from-bracket"></i> Logout</a>
-		<div class="divider"></div>
-	</div>
+	  <span onclick="toggelSidebar()" class="crossBtn">&times;</span>
+	  <a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i> Home</a>
+	  <a href="#" th:href="@{/user/show-contacts}" class="item"><i class="fa-regular fa-address-book"></i> View Contacts</a>
+	  <a href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i> Add Contacts</a>
+	  <a href="#" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
+	  <a href="#" class="item"><i class="fa-solid fa-gear"></i> Setting</a>
+	  <a href="#" th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+  
+  	  <div class="divider"></div>
+    </div>
 
 	<!-- End of sidebar -->
 
 
-	<div class="dashboard-banner">
-		<!-- Start of content -->
-
-		<div class="content mt-5">
+	<!-- Start of content -->
+	
+	<div class="content mt-5">
 
 			<i onclick="toggelSidebar()" class="fas fa-bars m-3 "
 				style="cursor: pointer; position: absolute; top: 8px; left: 0; font-size: 24px;"></i>
@@ -94,7 +90,6 @@
 			<div class="content-container">
 				<div style="margin-left: 20px;" th:replace="${content}"></div>
 			</div>
-		</div>
 	</div>
 
 	<!-- End of content -->

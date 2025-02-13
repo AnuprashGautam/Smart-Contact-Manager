@@ -8,13 +8,13 @@
 </head>
 <body>
 	<section
-		class="signin-banner d-flex justify-content-center align-items-center">
-		<div class="container">
+		class="d-flex justify-content-center align-items-center">
+		<div class="container mt-5">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
 					<div class="my-signin-card mt-1 rounded ">
 
-						<div class="container text-center">
+						<div class="text-center">
 							<img style="width: 80px;" th:src="@{/img/icons/signin.svg}"
 								alt="Sign up icon" />
 						</div>
@@ -44,7 +44,7 @@
 									placeholder="Password" required>
 							</div>
 
-							<div class="container text-center">
+							<div class="text-center">
 								<button type="submit" class="btn btn-success">Sign in</button>
 
 							</div>
@@ -53,11 +53,10 @@
 								Don't have an account? <a href="#" th:href="@{/signup}">Sign
 									up</a>
 							</p>
+						</form>
 					</div>
-					</form>
 				</div>
 			</div>
-		</div>
 		</div>
 	</section>
 </body>

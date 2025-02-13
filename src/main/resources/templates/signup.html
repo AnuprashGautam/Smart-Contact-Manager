@@ -7,8 +7,8 @@
 
 </head>
 <body>
-	<section class="signup-banner d-flex justify-content-center align-items-center">
-		<div class="container">
+	<section class="d-flex justify-content-center align-items-center">
+		<div class="container mt-2">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
 					<div class="my-signup-card mt-1 rounded ">
@@ -22,7 +22,7 @@
 					<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
 				
 					
-					<div class="container text-center" >
+					<div class="text-center" >
 								<img style="width: 80px;" th:src="@{/img/icons/signup.svg}" alt="Sign up icon" />
 							</div>
 						<h1 class="text-center">Sign up here</h1>
@@ -70,7 +70,7 @@
 							  	<label for="agreement">Accept terms and conditions</label>
 							  </div>
 							  
-							  <div class="container text-center">
+							  <div class="text-center">
 							  	<button type="submit" class="btn btn-success">Submit</button>
 							  	<button type="reset" class="btn btn-danger">Reset</button>
 							  </div>

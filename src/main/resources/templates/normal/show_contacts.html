@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title >Show contacts page.</title>
+</head>
+<body>
+	<section>
+		<div class="card">
+			<div class="card-body">
+				<h1 class="text-center">Your contacts</h1>
+		
+					<div class="table-responsive">
+						<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#ID</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Email</th>
+					      <th scope="col">Phone</th>
+					      <th scope="col">Action</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  
+					    <tr th:each="c : ${contacts}">
+					      <th scope="row" th:text="${'SCMUSER'+c.cId}"></th>
+					      <td th:text="${c.name}+' ('+${c.secondName}+')'"></td>
+					      <td th:text="${c.email}"></td>
+					      <td th:text="${c.phone}"></td>	
+					      
+					      <td>
+					      	<button class="btn btn-danger btn-sm">Delete</button>
+					      	<button class="btn btn-primary btn-sm">Update</button>
+					      </td>				      
+					    </tr>
+					   
+					  </tbody>
+					</table>
+					</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
