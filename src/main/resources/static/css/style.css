@@ -214,7 +214,7 @@ body {
 	background-repeat: no-repeat;
 	background-size:0% 100%;
 	background-position-x: right;
-	transition: background-size 500ms;
+	transition: background-size 750ms;
 	color:red;
 }
 
