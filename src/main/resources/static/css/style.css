@@ -251,5 +251,12 @@ body {
     color: gray; /* Makes button visible */
 }
 
+.profile_photo{
+	height: 35px;
+	width: 35px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
 
 

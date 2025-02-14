@@ -88,7 +88,11 @@ public class UserController {
 			User user = this.userRepository.getUserByUserName(name);
 			
 			// Processing and uploading file(Image).
-			if(!file.isEmpty())
+			if(file.isEmpty()) {
+				System.out.println("File is empty");
+				contact.setImage("contact.png");
+			}
+			else
 			{
 				contact.setImage(file.getOriginalFilename());
 				

@@ -25,7 +25,10 @@
 					  
 					    <tr th:each="c : ${contacts}">
 					      <th scope="row" th:text="${'SCMUSER'+c.cId}"></th>
-					      <td th:text="${c.name}+' ('+${c.secondName}+')'"></td>
+					      <td >
+					      	<img src="" class="profile_photo" th:src="@{'/img/'+${c.image}}" alt="Profile photo" />
+					      	<span th:text="${c.name}+' ('+${c.secondName}+')'">Name and nickname</span>
+					      </td>
 					      <td th:text="${c.email}"></td>
 					      <td th:text="${c.phone}"></td>	
 					      
