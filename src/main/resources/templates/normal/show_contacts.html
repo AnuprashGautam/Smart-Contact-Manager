@@ -8,7 +8,7 @@
 	<section>
 		<div class="card">
 			<div class="card-body">
-				<h1 class="text-center">Your contacts</h1>
+				<h1 class="text-center">Your Contacts</h1>
 		
 					<div class="table-responsive">
 						<table class="table">
@@ -26,9 +26,13 @@
 					    <tr th:each="c : ${contacts}">
 					      <th scope="row" th:text="${'SCMUSER'+c.cId}"></th>
 					      <td >
-					      	<img src="" class="profile_photo" th:src="@{'/img/'+${c.image}}" alt="Profile photo" />
-					      	<span th:text="${c.name}+' ('+${c.secondName}+')'">Name and nickname</span>
+					      	<a href="#" th:href="@{'/user/'+${c.cId}+'/contact'}">
+					      		<img src="" class="profile_photo" th:src="@{'/img/'+${c.image}}" alt="Profile photo" />
+					      		<span th:text="${c.name}+' ('+${c.secondName}+')'">Name and nickname</span>
+
+					      	</a>
 					      </td>
+					      
 					      <td th:text="${c.email}"></td>
 					      <td th:text="${c.phone}"></td>	
 					      

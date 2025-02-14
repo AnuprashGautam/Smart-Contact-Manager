@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -150,4 +151,18 @@ public class UserController {
 		return "normal/show_contacts";
 	}
 	
+	// Showing particular contact details.
+	@GetMapping("/{cId}/contact")
+	public String  showContactDetail(@PathVariable("cId") Integer cId, Model model) {
+		
+		System.out.println("Showing the details of the contact with id:"+cId);
+		
+		Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+		Contact contact= contactOptional.get();
+		
+		model.addAttribute("title",  contact.getName()+"- Contact Details");
+		model.addAttribute("contact",contact);
+		
+		return "normal/contact_detail";
+	}
 }

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Show contact details</title>
+</head>
+<body>
+	<section>
+		<div style="padding:1.25rem;" class="card text-center">
+			<h1>Contact Details</h1>
+			<div class="card-body">
+				<img class="card-img-top img-fluid" th:src="@{'/img/'+${contact.image}}" alt="Profile Photo">
+				<h1 class="card-title mt-3" ><span th:text="${contact.name}">Name</span> <span th:text="'('+${contact.secondName}+')'"></span></h1>
+				
+				<div class="table-responsive mt-3">
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#ID</th>
+				      <th scope="col">SCMUSER<span th:text="${contact.cId}"></span></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">Work</th>
+				      <td><span th:text="${contact.work}"></span></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Email</th>
+				      <td><span th:text="${contact.email}"></span></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Phone</th>
+				      <td><span th:text="${contact.phone}"></span></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">About</th>
+				      <td><span th:utext="${contact.description}"></span></td>
+				    </tr>
+				  </tbody>
+				</table>
+				
+				<div class="container mt-3">
+					<button class="btn btn-primary btn-sm">Update</button>
+					<button class="btn btn-danger btn-sm">Delete</button>
+				</div>
+				
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
