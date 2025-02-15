@@ -190,6 +190,32 @@ public class UserController {
 		
 		return "redirect:/user/show-contacts/0";	// redirect is basically used here to redirect the control on a path, not to any html page.
 	}
+	
+	
+	// Open update form handler
+	@PostMapping("/update-contact/{cId}")
+	public String updateForm(@PathVariable("cId") Integer cId ,Model model, Principal principal) {
+		
+		Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+		Contact contact= contactOptional.get();
+		
+		//Sending the api key to the template so that the respective service can be used.
+		model.addAttribute("api_key",apiKey);
+		model.addAttribute("contact",contact);
+		model.addAttribute("title","Update Contact");
+		
+		return "normal/update_form";
+	}
+	
+	
+	// Handling the update contact form data and updating the respective contact.
+	@PostMapping("/process-update")
+	public String updateContact(Model model,HttpSession session) {
+		
+		session.setAttribute("message",new Message("Contact updated successfully!!!", "alert-success"));
+		
+		return "normal/update_form";
+	}
 }
 
 
