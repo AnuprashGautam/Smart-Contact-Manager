@@ -5,7 +5,16 @@
 <title >Show contacts page.</title>
 </head>
 <body>
-	<section>
+	<section>	
+		
+		<!-- Message box -->
+		<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
+			<p th:text="${session.message.content}"></p>
+		</div>
+		
+		<!-- Removing the message after showing. -->
+		<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+			
 		<div class="card">
 			<div class="card-body">
 				<h1 class="text-center">Your Contacts</h1>
@@ -37,8 +46,8 @@
 					      <td th:text="${c.phone}"></td>	
 					      
 					      <td>
-					      	<button class="btn btn-danger btn-sm">Delete</button>
 					      	<button class="btn btn-primary btn-sm">Update</button>
+					      	<a class="btn btn-danger btn-sm" th:href="@{'/user/delete/'+${c.cId}}">Delete</a>
 					      </td>				      
 					    </tr>
 					   
@@ -48,7 +57,7 @@
 					
 					<!-- Pagination start here. -->
 					
-					<nav aria-label="Page navigation example">
+					<nav aria-label="Page navigation example" th:if="${totalPages!=0}">
 					
 					  <ul class="pagination">
 					  	

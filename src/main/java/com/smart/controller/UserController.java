@@ -163,11 +163,37 @@ public class UserController {
 		String userName = principal.getName();
 		User user = this.userRepository.getUserByUserName(userName);
 		
-		if(user.getId()==contact.getUser().getId()) {
+		if(user.getId()==contact.getUser().getId()) {  // Only the contacts which the logged in user have, can be view his/her own contacts.
 			model.addAttribute("contact",contact);
 			model.addAttribute("title",  contact.getName()+"- Contact Details");
 		}
 		
 		return "normal/contact_detail";
 	}
+	
+	
+	// Delete contact handler.
+	@GetMapping("/delete/{cId}")
+	public String deleteContact (@PathVariable("cId") Integer cId, Model model, Principal principal, HttpSession session) {
+		Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+		Contact contact=contactOptional.get();
+		
+		String userName = principal.getName();
+		User user = this.userRepository.getUserByUserName(userName);
+		
+		if(user.getId()==contact.getUser().getId()) { // Only the contacts which the logged in user have, can be deleted by him/her.
+			contact.setUser(null);						// To maintain the referential constraint.
+			this.contactRepository.delete(contact);
+			
+			session.setAttribute("message",new Message("Contact deleleted successfully!!!", "alert-success"));
+		}
+		
+		return "redirect:/user/show-contacts/0";	// redirect is basically used here to redirect the control on a path, not to any html page.
+	}
 }
+
+
+
+
+
+
