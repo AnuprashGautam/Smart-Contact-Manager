@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +45,9 @@ public class UserController {
 	
 	@Autowired
 	private ContactRepository contactRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	
 	// Adding common data to response.
@@ -275,7 +278,60 @@ public class UserController {
 		
 		return "normal/profile";
 	}
+	
+	//Handler method to update the profile.
+	@PostMapping("/update-profile")
+	public String updateUserProfile(Model model, Principal principal) {
+		String userName = principal.getName();
+		User user = this.userRepository.getUserByUserName(userName);
+		
+		//Sending the api key to the template so that the respective service can be used.
+		model.addAttribute("api_key",apiKey);
+		model.addAttribute("user",user);
+		model.addAttribute("title",user.getName()+"- Update Profile");
+		
+		return "normal/update_profile_form";
+	}
+	
+	@PostMapping("/process-update-profile")
+	public String processUpdateProfile(Model model,
+			@ModelAttribute User user,
+			@RequestParam("newImage") MultipartFile file, 
+			HttpSession session,
+			Principal principal) 
+	{
+		try {
+			User oldUserDetail=this.userRepository.getUserByUserName(principal.getName());
+			
+			// Checking if the user has provided the new profile photo ,or not.
+			if(!file.isEmpty()) {
+				//delete file
+				File deleteFile=new ClassPathResource("static/img").getFile();  // For path to that folder.
+				File file1=new File(deleteFile,oldUserDetail.getImageUrl());
+				file1.delete();
+				
+				//update image
+				File saveFile=new ClassPathResource("static/img").getFile();
+				
+				Path path=Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+				
+				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+				user.setImageUrl(file.getOriginalFilename());
+			}
+			else {
+				user.setImageUrl(oldUserDetail.getImageUrl());
+			}
+			session.setAttribute("message",new Message("Profile updated successfully.","alert-success"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("message",new Message("Something went wrong!!!","alert-danger"));
+		}
+		
+		return "normal/update_profile_form";
+	}
 }
+
+
 
 
 

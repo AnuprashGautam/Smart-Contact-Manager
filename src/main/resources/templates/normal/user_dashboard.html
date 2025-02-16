@@ -6,7 +6,7 @@
 </head>
 <body>
 	<section>
-		<h1>
+		<!-- <h1>
 			Welcome <span th:text="${user.name}"></span>!!! This is user dashboard.
 		</h1>
 		<hr />
@@ -28,7 +28,63 @@
 
 		<h2>
 			<a href="#" th:href="@{/logout}" )>Logout</a>
-		</h2>
+		</h2> -->
+		
+			<div class="card">
+				<div class="card-header text-center">
+					<h1>Dashboard</h1>
+				</div>
+			  <div class="row g-0">
+			    <div class="col-md-4 d-flex justify-content-center align-items-center">
+			      <img th:src="@{'/img/'+${user.imageUrl}}" style="border-radius:50%" class="img-fluid rounded-start">
+			    </div>
+			    <div class="col-md-8">
+			      <div class="card-body text-center">
+			        <h2 class="card-title" th:text="${user.name}"></h2>
+			        <div class="table-responsive mt-5">
+						<table class="table">
+						  <thead>
+						    <tr>
+						      <th scope="col">#USERID</th>
+						      <th scope="col">USER<span th:text="${user.id}"></span></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">Email</th>
+						      <td><span th:text="${user.email}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">Role</th>
+						      <td><span th:text="${user.role=='ROLE_USER'?'USER':'ADMIN'}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">Account Status</th>
+						      <td><span th:text="${user.enabled?'Active':'Unactive'}" th:classappend="${user.enabled?'text-success':'text-danger'}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">About</th>
+						      <td><span th:utext="${user.about}"></span></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+			      </div>
+			    </div>
+			  </div>
+			  <div style="padding:10px;" class="card-footer d-flex justify-content-between align-items-center">
+			  	<div class="left-buttons d-flex">
+			  		<a href="#" th:href="@{/user/add-contact}" class="btn btn-secondary btn-sm mr-2">Add Contact</a>
+				  	<form th:action="@{/user/update-profile}" method="post">
+							<button class="btn btn-primary mr-2 btn-sm" type="submit">Update</button>
+					</form>
+				  	<a href="#" class="btn btn-danger btn-sm">Delete</a>
+			  	</div>
+			  	<div class="right-buttons">
+			  		<a href="/logout" class="btn btn-primary btn-sm">Logout</a>
+			  	</div>
+			  </div>
+			</div>
 	</section>
 </body>
 </html>
