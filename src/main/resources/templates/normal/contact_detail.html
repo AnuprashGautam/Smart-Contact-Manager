@@ -7,6 +7,14 @@
 </head>
 <body>
 	<section>
+		<!-- Message box -->
+		<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
+			<p th:text="${session.message.content}"></p>
+		</div>
+		
+		<!-- Removing the message after showing. -->
+		<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+		
 		<div style="padding:1.25rem;" class="card text-center" th:if="${contact}">
 			<h1>Contact Details</h1>
 			<div class="card-body">
