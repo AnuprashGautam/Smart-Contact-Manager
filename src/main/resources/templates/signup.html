@@ -27,7 +27,7 @@
 							</div>
 						<h1 class="text-center">Sign up here</h1>
 						
-						<form novalidate="novalidate" th:action="@{/do_register}" method="post" th:object="${user}">
+						<form novalidate="novalidate" th:action="@{/do_register}" enctype="multipart/form-data" method="post" th:object="${user}">
 						
 							
 							  <div class="form-group">
@@ -64,6 +64,10 @@
 							  </div>
 							  </div>
 							  
+							  <!-- Profile Image -->
+							  <div class="custom-file">
+								<input type="file" name="userImage"/>
+							  </div>
 							  
 							  <div class="form-group form-check">
 							  	<input  name="agreement" type="checkbox" id="agreement" class="form-check-input" />
@@ -71,7 +75,7 @@
 							  </div>
 							  
 							  <div class="text-center">
-							  	<button type="submit" class="btn btn-success">Submit</button>
+							  	<button type="submit" class="btn btn-success">Sign up</button>
 							  	<button type="reset" class="btn btn-danger">Reset</button>
 							  </div>
 							  

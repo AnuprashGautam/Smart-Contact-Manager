@@ -260,6 +260,21 @@ public class UserController {
 		System.out.println("Contact ID="+contact.getcId());
 		return "redirect:/user/"+contact.getcId()+"/contact";
 	}
+	
+	
+	// Handler method to show the profile details.
+	@GetMapping("/profile")
+	public String profileHandler(Model model, Principal principal) {
+		
+		String userName = principal.getName();
+		
+		User user = this.userRepository.getUserByUserName(userName);
+				
+		model.addAttribute("title",user.getName());
+		model.addAttribute("user",user);
+		
+		return "normal/profile";
+	}
 }
 
 

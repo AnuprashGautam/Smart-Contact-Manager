@@ -1,6 +1,13 @@
 package com.smart.controller;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.smart.dao.UserRepository;
 import com.smart.entities.User;
@@ -60,7 +68,12 @@ public class HomeController{
 	
 	// Handler for registering user.
 	@PostMapping("/do_register")
-	public String registerUser(@Valid @ModelAttribute("user") User user,BindingResult bindingResult, @RequestParam(value="agreement",defaultValue="false") boolean agreement,Model model, HttpSession session)
+	public String registerUser(@Valid @ModelAttribute("user") User user,
+			BindingResult bindingResult,
+			@RequestParam(value="agreement",defaultValue="false") boolean agreement,
+			Model model,
+			HttpSession session,
+			@RequestParam("userImage") MultipartFile file)
 	{		
 		try {
 			if(!agreement) {
@@ -76,7 +89,26 @@ public class HomeController{
 			
 			user.setRole("ROLE_USER");
 			user.setEnabled(true);
-			user.setImageUrl("default.png");
+			
+			
+			if(file.isEmpty()) {
+				System.out.println("File is empty");
+				user.setImageUrl("default.png");
+			}
+			else
+			{
+				user.setImageUrl(file.getOriginalFilename());
+				
+				File saveFile = new ClassPathResource("/static/img").getFile(); // The path where profileImage is going to be saved.
+				
+				Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+				
+				Files.copy(file.getInputStream(),path , StandardCopyOption.REPLACE_EXISTING);
+				
+				System.out.println("Image uploaded successfully.");
+			}
+			
+			
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			
 			System.out.println("Agreement"+agreement);
