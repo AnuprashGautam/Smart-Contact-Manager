@@ -266,4 +266,48 @@ body {
 }
 
 
+/* Search css  */
+
+.search-container{
+	position: relative;
+	
+}
+
+.search-result{
+	display: none;
+	position: absolute;
+	background: white;
+	width:100%;
+	padding:10px;
+	border: 1px solid gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

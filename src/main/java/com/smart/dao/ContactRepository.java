@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.smart.entities.Contact;
+import com.smart.entities.User;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
@@ -18,4 +19,7 @@ public interface ContactRepository extends JpaRepository<Contact, Integer> {
 	//current page - page
 	//contact per page - 8
 	public Page<Contact> findContactsByUser(@Param("userId") int userId, Pageable pageable);
+	
+	
+	public List<Contact> findByNameContainingAndUser(String name,User user);
 }

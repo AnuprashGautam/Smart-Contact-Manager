@@ -18,8 +18,21 @@
 		<div class="card">
 			<div class="card-body">
 				<h1 class="text-center">Your Contacts</h1>
+				
+					<!-- Start of Search Box -->
+				
+					<div class="search-container my-2">
+						<input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search your contacts" />
+						
+						<div class="search-result">
+							<!-- Result goes here -->
+						</div>
+					
+					</div>
+					
+					<!-- End of Search Box -->
 		
-					<div class="table-responsive">
+					<div class="table-responsive mt-2">
 						<table class="table">
 					  <thead class="thead-dark">
 					    <tr>
