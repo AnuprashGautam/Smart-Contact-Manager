@@ -85,7 +85,8 @@ public class UserController {
 	public String processContact(@ModelAttribute Contact contact,
 								Principal principal,
 								@RequestParam("profileImage") MultipartFile file,
-								HttpSession session) 
+								HttpSession session,
+								Model model) 
 	{
 		try {
 			String name=principal.getName();
@@ -119,6 +120,9 @@ public class UserController {
 			
 			// For add contact form.
 			session.setAttribute("message",new Message("Contact added Successfully!!!","alert-success"));
+			
+			// Sending the api key.
+			model.addAttribute("api_key",apiKey);
 			
 			// For the back-end console.
 			System.out.println("Contact added successfully.");
@@ -311,16 +315,20 @@ public class UserController {
 				file1.delete();
 				
 				//update image
+				user.setImageUrl(file.getOriginalFilename());
+				
 				File saveFile=new ClassPathResource("static/img").getFile();
 				
 				Path path=Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 				
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-				user.setImageUrl(file.getOriginalFilename());
 			}
 			else {
 				user.setImageUrl(oldUserDetail.getImageUrl());
 			}
+			
+			this.userRepository.save(user);
+			
 			session.setAttribute("message",new Message("Profile updated successfully.","alert-success"));
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,16 +5,17 @@
 <title >Update profile page</title>
 </head>
 <body>
-	<section class="d-flex align-items-center justify-content-center" >
-		<!-- Message box -->
-		<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
-			<p th:text="${session.message.content}"></p>
-		</div>
-		
-		<!-- Removing the message after showing. -->
-		<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
-		
+	<section class="d-flex align-items-center justify-content-center" >		
 		<div class="container">
+		
+			<!-- Message box -->
+			<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
+				<p th:text="${session.message.content}"></p>
+			</div>
+			
+			<!-- Removing the message after showing. -->
+			<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+			
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card mt-2" style="padding-left:20px;padding-right:20px;">
@@ -22,33 +23,14 @@
 							<div class="text-center">
 								<h1>Update Profile</h1>
 							</div>
-							<form novalidate="novalidate" th:action="@{/user/process-update-profile}" enctype="multipart/form-data" method="POST" th:object="${user}">	
+							<form novalidate="novalidate" th:action="@{/user/process-update-profile}" enctype="multipart/form-data" method="post" th:object="${user}">	
 								  <div class="form-group">
 								    <label for="name_field">Your name</label>
 								    <input name="name" th:value="${user.name}" th:classappend="${#fields.hasErrors('name')? 'is-invalid':''}" type="text" class="form-control" id="name_field" placeholder="Enter your name here" required>
 								  
 								  	<div class="invalid-feedback" th:each="e: ${#fields.errors('name')}" th:text="${e}">
 								  </div>
-								  </div>
-					
-								  
-								  <div class="form-group">
-								    <label for="email_field">Email</label>
-								    <input name="email" th:value="${user.email}" th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}"  type="email" class="form-control" id="email_field" placeholder="Enter email address" required>
-								  
-								  	<div class="invalid-feedback" th:each="e: ${#fields.errors('email')}" th:text="${e}">
-								  </div>
-								  </div>
-								  
-								  
-								  <div class="form-group">
-								    <label for="password_field">Password</label>
-								    <input name="password" type="password" class="form-control" th:classappend="${#fields.hasErrors('password')? 'is-invalid':''}"  id="password_field" placeholder="Password" required>
-								  
-								  	 <div class="invalid-feedback" th:each="e: ${#fields.errors('password')}" th:text="${e}">
-								  </div>
-								  </div>
-								  
+								  </div>					  
 								  
 								  <div class="form-group">
 								  	<textarea name="about" th:utext="${user.about}" th:classappend="${#fields.hasErrors('about')? 'is-invalid':''}"  placeholder="Enter about yourself" class="form-control" rows="3"></textarea>
@@ -69,7 +51,7 @@
 								  
 								  <div class="container mt-3 d-flex justify-content-center align-items-center ">
 								  	<button type="submit" class="btn btn-success btn-sm mr-2">Save</button>
-								  	<button type="reset" class="btn btn-danger btn-sm">Reset</button>
+								  	<a href="#" th:href="@{/user/settings}" class="btn btn-warning btn-sm">Change Password</a>
 								  </div>
 							</form>
 						</div>
