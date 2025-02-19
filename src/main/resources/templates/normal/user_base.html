@@ -12,6 +12,9 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	
+<!-- jQuery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Font awesome cdn -->
 <link rel="stylesheet"
@@ -69,12 +72,12 @@
 
 	<div class="sidebar mt-1">
 	  <span onclick="toggelSidebar()" class="crossBtn">&times;</span>
-	  <a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i> Home</a>
-	  <a href="#" th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
-	  <a href="#" th:href="@{/user/show-contacts/0}" class="item"><i class="fa-regular fa-address-book"></i> View Contacts</a>
-	  <a href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-plus"></i> Add Contacts</a>
-	  <a href="#" class="item"><i class="fa-solid fa-gear"></i> Setting</a>
-	  <a href="#" th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+	  <a id="home-link" href="#" th:href="@{/user/index}" class="item sidebar-item active"><i class="fa-solid fa-house"></i> Home</a>
+	  <a id="profile-link" href="#" th:href="@{/user/profile}" class="item sidebar-item active"><i class="fa-solid fa-user"></i> Your Profile</a>
+	  <a id="contacts-link" href="#" th:href="@{/user/show-contacts/0}" class="item sidebar-item active"><i class="fa-regular fa-address-book"></i> View Contacts</a>
+	  <a id="add-contact-link" href="#" th:href="@{/user/add-contact}" class="item sidebar-item active"><i class="fa-solid fa-plus"></i> Add Contacts</a>
+	  <a id="settings-link" href="#" th:href="@{/user/settings}" class="item sidebar-item active"><i class="fa-solid fa-gear"></i> Setting</a>
+	  <a href="#" th:href="@{/logout}" class="item sidebar-item active"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
   
   	  <div class="divider"></div>
     </div>
@@ -97,8 +100,7 @@
 	<!-- End of content -->
 
 	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- Popper.js, then Bootstrap JS -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

@@ -329,6 +329,14 @@ public class UserController {
 		
 		return "normal/update_profile_form";
 	}
+	
+	
+	// open setting handler
+	@GetMapping("/settings")
+	public String openSettings() {
+		
+		return "normal/settings";
+	}
 }
 
 

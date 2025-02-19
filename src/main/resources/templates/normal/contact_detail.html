@@ -6,7 +6,7 @@
 <title>Show contact details</title>
 </head>
 <body>
-	<section>
+	<section class="d-flex align-items-center justify-content-center">
 		<!-- Message box -->
 		<div th:if="${session.message}" class="alert" th:classappend="${session.message.type}" role="alert">
 			<p th:text="${session.message.content}"></p>
@@ -15,52 +15,65 @@
 		<!-- Removing the message after showing. -->
 		<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
 		
-		<div style="padding:1.25rem;" class="card text-center" th:if="${contact}">
-			<h1>Contact Details</h1>
-			<div class="card-body">
-				<img class="card-img-top img-fluid" th:src="@{'/img/'+${contact.image}}" alt="Profile Photo">
-				<h1 class="card-title mt-3" ><span th:text="${contact.name}">Name</span> <span th:text="'('+${contact.secondName}+')'"></span></h1>
-				
-				<div class="table-responsive mt-3">
-				<table class="table">
-				  <thead>
-				    <tr>
-				      <th scope="col">#ID</th>
-				      <th scope="col">SCMUSER<span th:text="${contact.cId}"></span></th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">Work</th>
-				      <td><span th:text="${contact.work}"></span></td>
-				    </tr>
-				    <tr>
-				      <th scope="row">Email</th>
-				      <td><span th:text="${contact.email}"></span></td>
-				    </tr>
-				    <tr>
-				      <th scope="row">Phone</th>
-				      <td><span th:text="${contact.phone}"></span></td>
-				    </tr>
-				    <tr>
-				      <th scope="row">About</th>
-				      <td><span th:utext="${contact.description}"></span></td>
-				    </tr>
-				  </tbody>
-				</table>
-				
-				<div class="container mt-3">
-					<form th:action="@{'/user/update-contact/'+${contact.cId}}" method="post">
-							<button class="btn btn-primary btn-sm" type="submit">Update</button>
-					</form>
-					<a class="btn btn-danger btn-sm mt-2" th:href="@{'/user/delete/'+${contact.cId}}">Delete</a>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="padding:1.25rem;" class="card text-center" th:if="${contact}">
+					<h1>Contact Details</h1>
+					<div class="card-body">
+						<img class="card-img-top img-fluid" style="width:250px; height:250px; border-radius:50%" th:src="@{'/img/'+${contact.image}}" alt="Profile Photo">
+						<h1 class="card-title mt-3" ><span th:text="${contact.name}">Name</span> <span th:text="'('+${contact.secondName}+')'"></span></h1>
+						
+						<div class="table-responsive mt-3">
+						<table class="table">
+						  <thead>
+						    <tr>
+						      <th scope="col">#ID</th>
+						      <th scope="col">SCMUSER<span th:text="${contact.cId}"></span></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">Work</th>
+						      <td><span th:text="${contact.work}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">Email</th>
+						      <td><span th:text="${contact.email}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">Phone</th>
+						      <td><span th:text="${contact.phone}"></span></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">About</th>
+						      <td><span th:utext="${contact.description}"></span></td>
+						    </tr>
+						  </tbody>
+						</table>
+						
+						<div class="container mt-3 d-flex justify-content-center align-items-center">
+							<form th:action="@{'/user/update-contact/'+${contact.cId}}" method="post">
+									<button class="btn btn-primary btn-sm mr-2" type="submit">Update</button>
+							</form>
+							<a class="btn btn-danger btn-sm" th:href="@{'/user/delete/'+${contact.cId}}">Delete</a>
+						</div>
+						
+						</div>
+					</div>
 				</div>
-				
 				</div>
 			</div>
 		</div>
 		
 		<h1 th:unless="${contact}" class="text-center bg-danger text-white text-center">You don't have permission to see this contact!!!</h1>
+		
+		<script>
+			$(document).ready(() => {
+				$(".sidebar-item").removeClass("active");
+				$("#contacts-link").addClass("active");
+			});
+		</script>
 	</section>
 </body>
 </html>

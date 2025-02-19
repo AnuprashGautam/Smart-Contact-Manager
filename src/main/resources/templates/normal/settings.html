@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normal/user_base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Setting page</title>
+</head>
+<body>
+	<section class="d-flex align-items-center justify-content-center">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="text-center">Change Password</h1>
+							
+							<form action="">
+								
+								<!-- Old password field -->
+								<div class="form-group mt-2">
+									<input type="text" class="form-control" placeholder="Enter old password"/>
+								</div>
+								
+								<!-- New password field -->
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Enter new password"/>
+								</div>
+								
+								<div class="container text-center">
+									<button class="btn btn-success btn-sm mr-2" type="submit">Update</button>
+									<button class="btn btn-danger btn-sm" type="reset">Reset</button>
+								</div>
+								
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$(document).ready(() => {
+				$(".sidebar-item").removeClass("active");
+				$("#settings-link").addClass("active");
+			});
+		</script>
+	</section>
+</body>
+</html>
