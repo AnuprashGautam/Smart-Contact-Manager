@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,7 @@ public class UserController {
 	private ContactRepository contactRepository;
 	
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	
 	// Adding common data to response.
@@ -341,9 +342,44 @@ public class UserController {
 	
 	// open setting handler
 	@GetMapping("/settings")
-	public String openSettings() {
+	public String openSettings(Model model) {
+		
+		model.addAttribute("title","Settings");
 		
 		return "normal/settings";
+	}
+	
+	// Change password handler
+	@PostMapping("/change-password")
+	public String changePassword(Principal principal,
+								@RequestParam("oldPassword") String oldPassword,
+								@RequestParam("newPassword") String newPassword,
+								HttpSession session) 
+	{
+		System.out.println("OLD_PASSWORD: "+oldPassword);		
+		System.out.println("NEW_PASSWORD: "+newPassword);	
+		
+		String userName = principal.getName();
+		User user = this.userRepository.getUserByUserName(userName);
+		
+		System.out.println(user.getPassword());
+		
+		if(this.bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) 
+		{
+			// Changing the password and returning the success message.
+			user.setPassword(this.bCryptPasswordEncoder.encode(newPassword));
+			
+			this.userRepository.save(user);
+			
+			session.setAttribute("message", new Message("Password updated successfully.", "alert-success"));
+		}else 
+		{
+			// Just returning the failure message.
+
+			session.setAttribute("message", new Message("Password didn't matched with the old password. Something went wrong!!!", "alert-danger"));
+		}
+		
+		return "redirect: user/settings";
 	}
 }
 
