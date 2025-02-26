@@ -32,6 +32,22 @@ body {
     background-position: bottom left;
 }
 
+.about-card {
+    padding: 10px;
+    background-color: white;    
+    
+    background-image: linear-gradient(45deg, rgb(244, 215, 147), white);
+    background-size: 0% 0%;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    transition: background-size 1s;
+}
+
+.about-card:hover {
+    background-size: 100% 100%;
+    background-position: bottom left;
+}
+
 
 
 .my-signin-card {
