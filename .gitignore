@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 # Want Git to not track the changes in the application.properties
-#src/main/resources/application.properties
+src/main/resources/application.properties
 
 ### STS ###
 .apt_generated
